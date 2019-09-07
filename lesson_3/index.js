@@ -159,22 +159,15 @@ class CalculatorExtended extends Calculator{
 
 //5*
 
-class SomeClass { hello() {} }
-
-
-class t extends SomeClass{
-    constructor(){
-        super();
-        this.id = t.count+=1;
-        
+function withUniqueID(SomeClass){
+    let counterID = 0
+    return function () {
+        class A extends SomeClass{
+            constructor() {
+                super()
+                this.id = counterID++
+            }
+        };      
+        return new A
     }
 }
-t.count = 0;
-
-
- function f(){
-    
-     return new t
- }
-
- 
