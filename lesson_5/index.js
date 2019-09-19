@@ -41,4 +41,29 @@ class FormBuilder{
         this.form.parentElement.removeChild(this.form)
     }
 }
-//3
+
+//3 
+
+function initBall(){
+
+    let b = document.createElement('div');
+    b.setAttribute('class','ball');
+    b.style.backgroundColor = `rgb(${(~~(Math.random()*255))},${(~~(Math.random()*255))},${(~~(Math.random()*255))})`;
+    b.style.top = `${Math.random()*90}%`;
+    b.style.left = `${Math.random()*90}%`
+
+    b.addEventListener('click',(ev)=>{
+        ev.stopPropagation();
+        b.style.backgroundColor = `rgb(${(~~(Math.random()*255))},${(~~(Math.random()*255))},${(~~(Math.random()*255))})`;
+        b.style.top = `${Math.random()*90}%`;
+        b.style.left = `${Math.random()*90}%`
+    });
+    
+    document.body.append(b)
+    document.addEventListener('click',function stop(ev){
+        b.parentElement.removeChild(b);
+        document.removeEventListener('click', stop);
+    });
+
+}  
+
