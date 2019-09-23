@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>click on ball</title>
+    <style type="text/css">
+        .ball {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            line-height: 100px;
+            color: white;
+            text-align: center;
+            font-size: 50px;
+            font-family: fantasy;
+
+        }
+        #hello, #score{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 40px;
+            font-family: cursive;
+            text-align: center;
+
+        }
+        #go{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            color: white;
+            background-color: forestgreen;
+            line-height: 100px;
+            font-family: fantasy;
+            margin: 20px auto 0;
+            cursor: pointer;
+        }
+        .hid{display: none}
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="hello">
+        You have 10 seconds!
+        <div id="go">GO!</div>
+    </div>
+    <div id="score"></div>
+
+    <script>
+        let b = document.createElement('div'),
+            count = 0,
+            c = document.createElement('span'),
+            go = document.getElementById('go'),
+            score = document.getElementById('score'),
+            color =  ()=>{
+                return `rgb(${(~~(Math.random() * 255))},${(~~(Math.random() * 255))},${(~~(Math.random() * 255))})`
+            };
+
+            function rand() {
+                let w = Math.random() * (window.innerWidth - 100),
+                    h = Math.random() * (window.innerHeight - 100);
+                return [w, h]
+            }
+            
+        go.addEventListener('click',()=>{    
+            go.parentElement.setAttribute('class', 'hid')
+            b.setAttribute('class', 'ball');
+            b.style.backgroundColor = color();
+            b.style.top = `${rand()[1]}px`;
+            b.style.left = `${rand()[0]}px`;
+            c.innerHTML = count;
+            b.append(c)
+
+            function start () {
+                count++ ;
+                c.innerHTML = count;
+                b.append(c)
+                b.style.top = `${rand()[1]}px`;
+                b.style.left = `${rand()[0]}px`;
+                b.style.backgroundColor = color();
+            }
+
+            b.addEventListener('click',start);
+            document.body.append(b);
+            
+            setTimeout(()=>{
+                b.removeEventListener('click', start);
+                b.addEventListener('click',()=>{
+                    b.setAttribute('class', 'hid');
+                    score.innerText = `You score: ${count} hits, ${~~(count* (window.innerWidth * window.innerHeight)/100000)} points!
+                    press F5 to restart`;
+                });
+
+            },10000)
+        })
+        
+    </script>
+</body>
+
+</html>
