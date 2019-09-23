@@ -1,0 +1,38 @@
+.one{
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #5335cf 0%, #de005e 25%, #ee542a 50%, #de005e 75%, #5335cf 100%);
+    background-size: auto 3000px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    animation: slide .6s ease-out;
+    transition-duration: 1s;
+}
+@keyframes slide{
+    0%{
+        transform: translate(-250%,-50%);
+
+    }
+    100%{
+        transform: translate(-50%,-50%);
+    }
+}
+@keyframes grad {
+ 0%{background-position-y: 0%}
+ 50%{background-position-y: 100%}
+ 100%{background-position-y: 0%}
+}
+
+.x{
+    display: inline-block;
+    position: absolute;
+    top:20px;
+    right: 20px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
