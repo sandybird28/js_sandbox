@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>click on ball</title>
+    <style type="text/css">
+        .ball {
+            width: 100px;
+            height: 100px;
+            border-radius: 60px;
+            position: absolute;
+            line-height: 100px;
+            color: white;
+            text-align: center;
+            font-size: 50px;
+            font-family: fantasy;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <script>
+        let b = document.createElement('div'),
+            counter = 0,
+            c = document.createElement('span');
+ 
+        b.setAttribute('class', 'ball');
+        b.style.backgroundColor = `rgb(${(~~(Math.random() * 255))},${(~~(Math.random() * 255))},${(~~(Math.random() * 255))})`;
+        b.style.top = `${Math.random() * 90}%`;
+        b.style.left = `${Math.random() * 90}%`;
+        c.innerHTML = counter;
+        b.append(c)
+
+        b.addEventListener('click', function () {
+            counter++ ;
+            c.innerHTML = counter;
+            b.append(c)
+            b.style.top = `${Math.random() * 90}%`;
+            b.style.left = `${Math.random() * 90}%`;
+            b.style.backgroundColor = `rgb(${(~~(Math.random() * 255))},${(~~(Math.random() * 255))},${(~~(Math.random() * 255))})`;
+            if(counter==15){
+                alert('go back to work!');
+            }
+        })
+        document.body.append(b)  
+        
+        
+    </script>
+</body>
+
+</html>

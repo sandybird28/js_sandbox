@@ -1,54 +1,81 @@
 //1
-function makeGreetings(age){
-    function end(age) {
-        if (age < 10 || age > 20) {
-            switch (age % 10) {
-                case 1: return 'год';
-                case 2:
-                case 3:
-                case 4: return 'года';
-                default: return 'лет';
-            }
-        } else{
-            return 'лет';
-        };        
-    }
-    return 'Мой возраст '+age+' '+end(age);
+function removeKeys(obj,arr){
+
+    arr.forEach(key => {
+        delete obj[key];
+    });
+
+    return obj
 }
 
 //2
-function splitArray(arr, b){
-    let splitArr = [];
-    while (arr.length>0){
-        splitArr.push(arr.splice(0,b))
-    }
-    return splitArr;
+
+function clearNumbers(arr){
+    arr.forEach(arrIn =>{
+        for(i=arrIn.length-1; i>=0; i--){
+            if(typeof arrIn[i] !== "number" ||  isNaN(arrIn[i]) ){
+                arrIn.splice(i, 1);
+            };
+        };
+    });
+    return arr
 }
 
 //3
-function add(x){
-    return function(y){
-        return x+y;
+
+function reverse(...str){
+    let rewStr = [];
+    for(str2 of str){
+        rewStr.push(str2.split('').reverse().join(''));
     }
+    return rewStr.reverse()
 }
 
-//4
-function transformData(arr){
-    let obj={};
-    for(i=0;i<arr.length;i++){
-        if(arr[i].mark>5){
-            ((arr[i].lastName)&&(arr[i].firstName))? obj[arr[i].login]= arr[i].firstName+' '+arr[i].lastName: obj[arr[i].login]= arr[i].firstName+arr[i].lastName;
+
+
+//4*
+function join(...arg){
+    let res ={};
+    let val;
+
+    arg.forEach(element => {
+        if(typeof element == "object"){
+            for(key in element){
+                val = element[key];
+                    switch (typeof val) {
+                        case 'object':
+                            if(Array.isArray(val)){
+                                if(typeof res[key] == "undefined"){
+                                    res[key]=val
+                                } else{ 
+                                    for(i = 0 ; i < val.length ; i++){
+                                        res[key].push(val[i]); 
+                                }}
+                            }                            
+                            break;
+                        case 'number':
+                            if(isNaN(val)|| val == Infinity || val == -Infinity){
+                                break;
+                            }else{
+                                if(typeof res[key] == "undefined"){
+                                    res[key]=val
+                                } else{
+                                    res[key]+=val
+                                }
+                            };
+                            break;
+                        case 'string': 
+                            if(typeof res[key] == "undefined"){
+                                res[key]=val
+                            } else{
+                                res[key]+=val
+                            }                   
+                        default:                         
+                            break;
+                    }
+                }
         }
-    }
-   return obj;
-}
+    });    
 
-//5
-function addInfinite(x){
-    f.result = x;
-    function f(y){
-        f.result += y;
-        return f
-    };
-    return f
+    return res
 }
