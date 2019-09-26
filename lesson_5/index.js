@@ -34,7 +34,7 @@ class FormBuilder{
     }
     addButton(name){
         let b = document.createElement('button');
-        b.innerText = name;
+        b.textContent = name;
         this.form.appendChild(b) 
     }
     destroy(){
