@@ -17,12 +17,12 @@ const add = (a) => {
     const func = (b) => {
         if (b) {
             sum += b;
+            if (b==3||b==6) {return  func()} 
             return  func
         }else {
             return sum;       
             }
     };
-    func.toString = () => {return sum;};
     return func;
 }
 
@@ -57,7 +57,7 @@ function findDuplicate(arr){
 //5
 
 function findMaxChainSum(arr){
-    let res = 0, sum = 0, chain =[], mChain;
+    let res = 0, sum = -Infinity, chain =[], mChain;
     for (i = 0;i < arr.length; i++ ){
         for (n = i;n < arr.length; n++ ){
             sum += arr[n];

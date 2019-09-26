@@ -139,11 +139,11 @@ class CalculatorExtended extends Calculator{
         return super.sub(num)
     }
     mul(num){
-        this.str = (this.str.length >4)? `(${this.str}) * ${num}` : `${this.str} * ${num}`;
+        this.str = `${this.str} * ${num}`;
         return super.mul(num)
     }
     div(num){
-        this.str = (this.str.length >4)? `(${this.str}) / ${num}` : `${this.str} / ${num}`;
+        this.str = `${this.str} / ${num}`;
         return super.div(num)
     }
     pow(num){
