@@ -1,0 +1,65 @@
+body{
+    margin: 0;
+    background: url('img/bg.svg');
+    background-size: cover;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 30px;
+    display: flex;flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 50px
+}
+#conv, #hist{
+    margin:  50px 0;
+    text-align: center;
+    text-shadow: 0px 0px 8px #000000;
+    line-height: 50px;
+    padding: 10px;
+    background: rgba(55, 55, 55, 0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+
+}
+#hist{ 
+    top: 40%;
+    /* transition-duration: 12s; */
+    transition-delay: 12s;
+
+}
+
+select, input{
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    text-shadow: 0px 0px 8px #000000;
+    text-align: center;
+
+}
+select {
+    text-shadow: none
+}
+select option{
+    background-color: #bbb;
+
+}
+input{
+    width: 175px;
+
+}
+#inp{
+    width: 45px;
+}
+button{
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    /* line-height: 35px; */
+    padding: 0px 10px;
+    color: #fff;
+    font-size: 30px;
+    text-shadow: 0px 0px 8px #000000;
+    cursor: pointer;
+
+}
