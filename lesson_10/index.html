@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Конвертер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="conv">
+        Конвертировать <input id="inp" type="text"placeholder='0'>
+        <select id="cur1">
+            <option value="GBP">£</option>
+            <option value="USD">$</option>
+            <option value="EUR">€</option>
+        </select>
+        в
+        <select id="cur2">        
+            <option value="EUR">€</option>
+            <option value="GBP">£</option>
+            <option value="USD">$</option>
+        </select>
+        <button id="go">конвертировать</button>
+        <br>
+        <span id="span"></span>
+    </div>
+    <div id="hist">
+        Динамика курса    
+        <select id="cur1h">
+            <option value="GBP">£</option>
+            <option value="USD">$</option>
+            <option value="EUR">€</option>
+        </select> 
+        к
+        <select id="cur2h">
+            <option value="EUR">€</option>
+            <option value="GBP">£</option>
+            <option value="USD">$</option>
+        </select>
+        <br>
+        за период с
+        <input type="text"  id="start" placeholder="yyyy-mm-dd">
+        по
+        <input type="text"  id="end" placeholder="yyyy-mm-dd">
+        <button id="go2">смотреть</button>
+        <br>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
