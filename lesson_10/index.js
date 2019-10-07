@@ -129,8 +129,8 @@ function gr(){
     .then((resp)=>resp.json())
     .then((h)=>{
         let g = [];
-            Object.values(h.rates).forEach(el=>{
-                g.push(el[cur2h.value]);
+            Object.keys(h.rates).sort().forEach(el=>{
+                g.push(h.rates[el][cur2h.value]);
             })
         return g})
     .then((g)=>{
