@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Mono&display=swap');
+body{
+    margin: 0;
+    font-family: Menlo,PT Mono;
+    color: #515151;
+    font-size: 18px;
+    text-align: center;
+
+    padding: 10% 0;
+}
+
+button{
+    border: 1px solid rgb(45, 82, 124);
+    color: rgb(45, 82, 124);
+    font-family: Menlo,PT Mono;
+    background: #fff;
+    font-size: 18px;
+    border-radius: 3px;
+    margin: 20px;
+    transition-duration: .2s;
+}
+button:hover{
+    color:#fff;
+    background:  rgb(45, 82, 124);
+
+
+}
+#error button{
+    border-color: #ea4235;
+    color: #ea4235
+}
+#error button:hover{
+    color:#fff;
+    background:  #ea4235;
+
+}
+.message{
+    border: 1px solid rgb(45, 82, 124);
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 500px;
+    border-radius: 3px;
+
+
+}
