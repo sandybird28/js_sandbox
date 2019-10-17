@@ -6,3 +6,30 @@
     width: 150px;
     background-color: blue;
 }
+.header{
+    height: 50px;
+    text-align: center;
+    background-color: yellowgreen
+}
+main{
+    display: flex;
+    justify-content: space-between;
+}
+.sidebar{
+ background-color: lightblue;
+}
+.content{
+    background-color: lightsalmon;
+    height: 500px;
+    width: 100%;
+}
+.footer{
+    height: 50px;
+    text-align: right;
+    background-color: saddlebrown
+}
+.footer-link{
+    text-decoration: none;
+    font-weight: bold;
+    color: seashell;
+}
