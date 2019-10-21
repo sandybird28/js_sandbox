@@ -2,66 +2,57 @@
 import React from 'react';
 import './country.css'
 
-class List extends React.Component{
-    constructor(props){
-        super(props);
-
-
-    }
-    render() {
-        return(
-            <li><img src={this.props.src} /> {this.props.name}</li>
-        )
-    }
-}
-
-
-export default class CountrySelect extends React.Component{
+export default class CountrySelect extends React.Component {
     constructor(props) {
         super(props);
+        this.disabled = props.disabled;
         this.state = {
-            list: ''
+            list: 'whait...',
+            picked: ''
         };
-        this.list=[];
-        
-    }
-    click(e) {
-        console.log('e')
+        this.list = [];
+        this.getCountryList();
+
     }
 
-    renderLi(el){
-        return (
-            <li onClick={this.click}>
-                <img class="flag" src={el.flag} alt={`flag of ${el.name}`}/>
-                {el.name}
-                </li>
-        )
+    pick(e) {
+        if(!this.disabled){
+            this.setState({ picked: e.target });
+        }
     }
-    getCountryList(){
+
+
+    getCountryList() {
         fetch('https://restcountries.eu/rest/v2/all')
-            .then((resp)=>resp.json())
-            .then((data)=>{
-                data.forEach(el => {
-                    this.list.push(this.renderLi(el)) 
-                });
-                console.log(this.list)
+            .then((resp) => resp.json())
+            .then((data) => {
+                this.list = data.map((el, index) => (
+                    <li key={index} onClick={this.pick.bind(this)} style={this.disabled?{cursor:  "not-allowed"}:{cursor: 'pointer'}}>
+                        <img className="flag" src={el.flag} alt={`flag of ${el.name}`} /> {el.name}
+                    </li>
+                ))
             })
-            .then(()=>this.setState({list:this.list}))
+            .then(() => this.setState({ list: this.list }))
+            .catch(err => console.log(err))
     }
-    render() {
-        return(
-        <ul 
-            dangerouslySetInnerHTML={{__html: this.state.list}}
-            style={{maxHeight: this.props.maxHeight}}
-        >
-            {/* <li onClick={this.click}>aaf</li> */}
-            {/* {this.list.forEach(el => {
-                this.renderLi(el)
-            })} */}
-        
-        </ul>
+
+    componentDidUpdate(prevProps,prevState){
+        if(this.state.picked){
             
+            this.state.picked.classList.toggle("pick");
+            if(prevState.picked){
+               prevState.picked.classList.toggle("pick");
+            } 
+            
+        }
+        
+    }
+
+    render() {
+        return (
+            <ul style={{ maxHeight: this.props.maxHeight }}>
+                {this.state.list}
+            </ul>
         )
     }
 }
-

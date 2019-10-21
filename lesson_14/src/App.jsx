@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Timer from './timer';
-import Country from './country'
+import Country from './country2'
 
 
 function App() {
@@ -9,8 +9,14 @@ function App() {
     <div className="App">
         <Timer />
         <Country 
-          maxHeight = '300px'
+          maxHeight = '150px'
+          disabled = {false}
         />
+        <Country 
+          maxHeight = '200px'
+          disabled = {true}
+        />
+
     </div>
   );
 }
