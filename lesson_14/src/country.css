@@ -8,3 +8,9 @@ ul{
     /* max-height: 500px; */
     overflow-y: scroll;
 }
+
+
+.pick{
+    text-shadow: 0px 0px 5px #fff;
+    color: lightskyblue;
+}
