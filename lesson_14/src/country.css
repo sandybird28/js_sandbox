@@ -1,0 +1,10 @@
+.flag{
+    width: 15px;
+    height: 10px;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    /* max-height: 500px; */
+    overflow-y: scroll;
+}
