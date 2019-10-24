@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap');
+body{
+    margin: 0;
+    background: #000;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    color: #FCFCFC;
+}
+
+.wrapper{
+    width: 250px;
+    margin: 0 auto;
+    padding-top: 25vh;
+}
+
+.app-info{
+    font-size: 36px;
+    line-height: 44px;
+    text-transform: uppercase;
+}
+
+.error{
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF473A;
+}
+
+input{
+    width: 250px;
+    height: 42px;
+    font-size: 12px;
+    line-height: 15px;
+    box-sizing: border-box;
+    padding-left: 15px;
+}
+
+input::placeholder{
+    color: #000;
+}
+
+.address{
+    margin: 20px 0;
+    font-size: 12px;
+}
+
+.forgot{
+    font-size: 10px;
+    line-height: 12px;
+    text-align: right;
+    margin-top: 6px;
+}
+
+.account{
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.button{
+    border: none;
+    width: 250px;
+    height: 42px;
+    background: #FF473A;
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    margin: 30px 0 10px;
+    color: #FFFFFF;
+}
+
+.button:disabled{
+    opacity: 0.5;
+}
+
+.avatar{
+    display: block;
+    margin: 71px auto 28px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.35);
+}
+.welcome{
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 100px;
+}
+.welcome span{
+    font-weight: 600;
+}
