@@ -27,6 +27,7 @@ body{
 }
 
 input{
+    font-family: Montserrat;
     width: 250px;
     height: 42px;
     font-size: 12px;
@@ -36,6 +37,7 @@ input{
 }
 
 input::placeholder{
+    font-family: Montserrat;
     color: #000;
 }
 
@@ -57,6 +59,7 @@ input::placeholder{
 }
 
 .button{
+    font-family: Montserrat;
     border: none;
     width: 250px;
     height: 42px;

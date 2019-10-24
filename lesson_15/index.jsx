@@ -9,7 +9,6 @@ class Login extends React.Component {
             border: '',
             disabled: true,
             hidden: true,
-
             error: ''
           };
     }
