@@ -20,7 +20,7 @@ class Name extends React.Component {
     }
     render(){
         return(
-            <div className="Name">
+            <div className="inp">
                 Name
                 <input 
                     type="text"
@@ -39,7 +39,6 @@ class Name extends React.Component {
         )
     }
 }
-
 class Userame extends React.Component {
     constructor(props) {
         super(props);
@@ -58,14 +57,14 @@ class Userame extends React.Component {
     }
     render(){
         return(
-            <div className="Userame">
+            <div className="inp">
                 Userame
                 <input 
                     required 
                     type="text"
                     style={{
                         borderBottomColor: 
-                        this.state.valid
+                        this.state.valid 
                             ?'green'
                             :'red'
                         }}
@@ -83,7 +82,7 @@ class Country extends React.Component {
     }
     render(){
         return(
-            <div className="Country">
+            <div className="inp">
                 Country
                 <input 
                     type="text"
@@ -102,11 +101,13 @@ class Age extends React.Component {
     }
     render(){
         return(
-            <div className="Userame">
+            <div className="inp">
                 Age
                 <input 
                     type="text"
-                    onChange={(e)=>{this.props.d("age", e.target.value)}} 
+                    onChange={(e)=>{
+                        this.props.d("age", Number(e.target.value))
+                    }} 
                 >
 
                 </input>
@@ -118,7 +119,7 @@ class Age extends React.Component {
 
 
 
- export default class Step1 extends React.Component {
+export default class Step1 extends React.Component {
     constructor(props) {
         super(props);
         this.user = {
@@ -128,7 +129,7 @@ class Age extends React.Component {
             age: '',
         }
         this.state = {
-            bColor: ''
+            validU: ''
         }
     }
     addToUser(k,v){
@@ -141,33 +142,38 @@ class Age extends React.Component {
             .then(data =>{
                 console.log(data)
                 if(data.status == 'OK'){
-                    //console.log('OK')        
+                    this.setState({validU: ""})
                     this.props.s1({s1: true})
                     this.props.user(this.user)
 
 
                 } else{
-                    //console.log('NO')        
-                    this.setState({bColor: 'red'})
+                    this.setState({validU: data.error ? data.error: 'This username is taken'})
                 }
             })
+            .catch(err=>this.setState({validU: err}))
 
 
     }
     render(){
         return(
-            <div>
-                step 1
+            <div 
+                hidden={this.props.hidden} 
+                className="step"
+            >
+                
                 <Name name={this.addToUser.bind(this)}/>
                 <Userame 
                     username={this.addToUser.bind(this)}
-                    validU={this.state.validU} 
+                    valid={this.state.validU}
                 />
-                <Age d={this.addToUser.bind(this)}/>
-                <Country d={this.addToUser.bind(this)}/>
-
+                {this.state.validU? <div>{this.state.validU}</div>: null}
+                <div className="container">
+                    <Age d={this.addToUser.bind(this)}/>
+                    <Country d={this.addToUser.bind(this)}/>
+                </div>
                 <button 
-                    className="start"
+                    className="next"
                     onClick={this.onClick.bind(this)}
                 >
                     next step

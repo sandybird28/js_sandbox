@@ -1,4 +1,6 @@
 import React from 'react';
+import logo from './img/logo.png'
+import arrow from './img/arrow-left.png'
 
 export default class Start extends React.Component {
     onClick(){
@@ -6,8 +8,12 @@ export default class Start extends React.Component {
     }
     render(){
         return(
-            <div>
-                <img src="#" alt="logo" className="logo"/>
+            <div hidden={this.props.hidden}>
+                <img 
+                    src={logo} 
+                    alt="logo" 
+                    className="logo"
+                ></img> 
                 <h1>Read Books</h1>
                 <div className="text">
                     Create your account to get started. After that,
@@ -17,7 +23,7 @@ export default class Start extends React.Component {
                     className="start"
                     onClick={this.onClick.bind(this)}
                 >
-                    next
+                    <img src={arrow} />
                 </button>
             </div>
         )
