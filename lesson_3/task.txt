@@ -1,0 +1,92 @@
+Part 1:
+  Создать класс  Human, который в качестве аргумента принимает объект с ключами name(содержит имя строкой),
+  age(содержит возраст числом).
+  Human({ name: 'ivan', age: 19 })
+  У класса Human должен быть метод sayHello, который будет выводить в консоль строку
+  “Hello, my name is ${name}, I am ${age} years old”
+  Создать класс AlevelStudent, наследуемый от Human, который принимает в себя параметры name,
+  age и новый ключ marks, которой будет содержать массив ваших оценок за домашние задание числами ([5, 3, 5, 1, 4])
+  AlevelStudent({ name: 'Ivan', age: 19, marks: [1, 2, 3, 4, 5] });
+  У класса AlevelStudent должен быть метод averageMark, который возвращает среднее значение из вашего массива оценок
+
+Part 2:
+  Создать класс  Calculator, со следующими методами:
+  reset() - сбрасывает текущий результат на 0
+  add(num) - изменяет текущий результат добавляя к нему num
+  sub(num) - изменяет текущий результат отнимая от него num
+  mul(num) - изменяет текущий результат умножая его на num
+  div(num) - изменяет текущий результат деля его на num
+  pow(num) - изменяет текущий результат возводя его в степень num
+  sqrt() - изменяет текущий результат, взяв у него квадратный корень
+  getResult() - возвращает текущий результат
+  Все методы кроме getResult - возвращают this, пример:
+  (new Calculator()).add(3).reset().sub(3).mul(2).div(3).pow(4).sqrt().getResult() // returns 4
+  (new Calculator()).add(3).div(3).getResult() // returns 1
+  (new Calculator()).getResult() // returns 0
+
+Part 3:
+  Создать класс  Point(x, y):
+  заменить метод toString, чтобы он возвращал “Point[x y]”, где x и y - значения
+  соответствующих свойств
+  создать метод set(x, y), который задает соответствующие значения
+  создать метод getX, который возвращает координату  x
+  создать метод getY, который возвращает координату  y
+
+  Создать класс  Line(point1, point2) - аргументы это объекты класса Point
+  заменить метод toString, чтобы он возвращал “Line(Point[x y] - Point[x y])”, где ”Point[x y]” - результат
+  метода toString соответствующей точки
+  должны быть ключи point1 и point2, которые задаются в конструкторе
+  создать метод length(), который вернет расстояние между точками (подсказка формулы)
+
+  Примеры:
+
+  const p1 = new Point(3, -1);
+  console.log(p1.toString()) // Point[3 -1]
+
+  p1.set(5, 2);
+  console.log(p1.getX() + p1.getY()) // 7
+
+  const line = new Line(p1, new Point(-1, 2));
+  console.log(line.point1 === p1) // true
+  console.log(line.toString()) // Line(Point[5 2] - Point[-1 2])
+  console.log(line.length()) // 6
+  Создать класс  WeightedPoint(x, y, weight) который наследуется от Point:
+  заменить метод toString, чтобы он возвращал “weight&Point[x y]”, где weight - значения
+  свойства веса, Point[x y], - результат работы родительского метода.
+  заменить метод set(x, y, weight), который задает соответствующие значения
+  создать метод getWeight, который возвращает свойство веса
+
+  Пример:
+
+  const p1 = new Point(2, 3.4);
+  const p2 = new WeightedPoint(-1, 0.5, 3);
+  const line = new Line(p1, p2);
+  line.toString() // "Line(Point[2 3.4] - 3&Point[-1 0.5])"
+
+Part 4*:
+  Создать класс CalculatorExtended, который наследует класс Calculator из части 2.
+  Заменить метод toString, чтобы он возвращал историю операций калькулятора и результат:
+
+  const calc = new CalculatorExtended();
+  calc.add(3).reset().sub(3).mul(2).add(3).pow(4).sqrt();
+  calc.toString(); // √((0 + 3 * 2 + 3) ^ 4) = 4
+  Еще примеры:
+  calc.reset().div(2).reset().mul(2).toString() // 0 * 2 = 0
+  calc.reset().div(2).mul(2).toString() // 0 / 2 * 2 = 0
+  calc.reset().sub(3).div(2).toString() // (0 - 3) / 2 = -1.5
+  calc.reset().sqrt().toString() // √(0) = 0
+  calc.reset().add(4).sqrt().toString() // √(0 + 4) = 2
+  calc.reset().add(4).mul(2).mul(2).toString() // (0 + 4) * 2 * 2 = 16
+
+Part 5*:
+  Создать функцию withUniqueID(parentClass)
+
+  Она должна вернуть новый класс, который унаследован от аргумента parentClass и с помощью конструктора
+  добавляет при создании ключ id - порядковый номер объекта который увеличивается на 1 при каждом создании экземпляра
+  этого класса, для первого объекта он будет 1, для второго 2, и так далее. Пример:
+
+  class SomeClass { hello() {} }
+  const SomeClassWithID = withUniqueID(SomeClass);
+  new SomeClassWithID() // { id: 1, hello() {} }
+  new SomeClassWithID() // { id: 2, hello() {} }
+  new SomeClassWithID() // { id: 3, hello() {} }
